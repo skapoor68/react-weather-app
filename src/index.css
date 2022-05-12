@@ -8,7 +8,7 @@ body {
   font-family: 'montseratt', sans-serif;
 }
 
-.App {
+.App.cold {
   background-image: url('./assets/cold-bg.jpeg');
   background-size: cover;
   background-position: bottom;
@@ -17,6 +17,9 @@ body {
 
 .App.warm {
   background-image: url('./assets/warm-bg.jpeg');
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4s ease-out;
 }
 
 main {
@@ -28,6 +31,7 @@ main {
 .search-box {
   width: 100%;
   margin: 0 0 75px;
+  padding: 15px 0px 0px 0px;
 }
 
 .search-box .search-bar {
@@ -40,4 +44,58 @@ main {
   outline: none;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 0px 0px 16px 16px;
+  margin-top: -25px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .6);
+  color: #313131;
+  font-size: 20px;
+  transition: 0.4s ease;
+}
+
+.search-box .search-bar:focus {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.location-box .location {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 500px;
+  text-align: center;
+  text-shadow: 3px 3px rgba(50, 50, 70, .75)
+}
+
+.location-box .date {
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  text-shadow:rgba(50, 50, 70, .7);
+  padding: 8px;
+}
+
+.weather-box {
+  text-align: center;
+}
+
+.weather-box .temp {
+  position: relative;
+  display: inline-block;
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  padding: 15px 25px;
+  color: #FFF;
+  font-size: 100px;
+  font-weight: 775;
+  text-shadow: 3px 6px rgba(50, 50, 70, .2);
+  text-align: center;
+  box-shadow: 3px 5px rgba(0, 0, 0, .15);
+
+}
+
+.weather-box .weather {
+  color: #FFF;
+  font-size: 48px;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(50, 50, 70, .5);
 }
