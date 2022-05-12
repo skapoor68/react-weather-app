@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const api = {
-  key: "ac7e9009effe6d900738463e7f8eb303",
+  key: "fc86b30a8b87ed1df4994ac0c8d20e7d",
   base: "https://api.openweathermap.org/data/2.5/weather?q="
 }
 
@@ -36,16 +36,37 @@ function App() {
   }
 
   const backgroundBuilder = () => {
-    // TODO
+    let condition = weather.weather[0].main;
+    let temp = Math.round(weather.main.temp);
+    let time = new Date().getHours();
+
+    if (typeof weather.main == "undefined") {
+      return "App warm-day";  // default to warm day background               
+    } else {
+      if (condition === "Thunderstorm" || condition === "Drizzle" || condition === "Rain") {
+        return "App rain";
+      } else if (condition === "Snow") {
+        return "App snow";
+      } else if (condition === "Haze") {
+          return "App haze";
+      } else if (temp >= 65 && (condition === "Clear" || condition === "Clouds") && (time >= 9 && time <= 19)) {
+          return "App warm-day";
+      } else if (temp < 65 && (condition === "Clear" || condition === "Clouds") && (time >= 9 && time <= 19)) {
+          return "App cold-day";
+      } else if (temp >= 65 && condition === "Clear" && (time < 9 || time > 19)) {
+          return "App warm-night";
+      } else if (temp < 65 && condition === "Clear" && (time < 9 || time > 19)) {
+          return "App cold-night";
+      } else if (time < 9 || time > 19) {
+          return "App warm-night";
+      } else {
+          return "App warm-day";
+      }
+    }
   }
 
   return (
-    <div className={(typeof weather.main != "undefined") 
-                      ? ((weather.main.temp >= 65)      // if the fetched weather is 65 degrees or higher 
-                        ? "App warm"                        // use the warm background
-                        : "App cold")                       // otherwise use the cold background
-                      : "App warm"}                     // default with the cold background
-    >                     
+    <div className={backgroundBuilder()}>
       <main>
         <div className="search-box">
           <input 
