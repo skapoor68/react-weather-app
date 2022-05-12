@@ -43,6 +43,8 @@ function App() {
     let condition = weather.weather[0].main;
     let temp = Math.round(weather.main.temp);
     let time = new Date().getHours();
+    
+    console.log(time);
 
     if (typeof weather.main == "undefined") {
       return "App warm-day";  // default to warm day background if query is invalid              
@@ -57,9 +59,9 @@ function App() {
           return "App warm-day";
       } else if (temp < 65 && (condition === "Clear" || condition === "Clouds") && (time >= 9 && time <= 19)) {
           return "App cold-day";
-      } else if (temp >= 65 && condition === "Clear" && (time < 9 || time > 19)) {
+      } else if (temp >= 65 && (condition === "Clear" || condition === "Clouds") && (time < 9 || time > 19)) {
           return "App warm-night";
-      } else if (temp < 65 && condition === "Clear" && (time < 9 || time > 19)) {
+      } else if (temp < 65 && (condition === "Clear" || condition === "Clouds") && (time < 9 || time > 19)) {
           return "App cold-night";
       } else if (time < 9 || time > 19) {
           return "App warm-night";
