@@ -34,6 +34,11 @@ function App() {
 
     return `${day} ${date} ${month} ${year}`
   }
+
+  const backgroundBuilder = () => {
+    // TODO
+  }
+  
   return (
     <div className={(typeof weather.main != "undefined") 
                       ? ((weather.main.temp >= 65)      // if the fetched weather is 65 degrees or higher 
