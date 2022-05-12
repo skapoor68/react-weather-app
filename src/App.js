@@ -32,13 +32,13 @@ function App() {
     let month = months[d.getMonth()];
     let year = d.getFullYear();
 
-    return `${day} ${date} ${month} ${year}`
+    return `${day}, ${month} ${date}, ${year}`
   }
 
   const backgroundBuilder = () => {
     // TODO
   }
-  
+
   return (
     <div className={(typeof weather.main != "undefined") 
                       ? ((weather.main.temp >= 65)      // if the fetched weather is 65 degrees or higher 
