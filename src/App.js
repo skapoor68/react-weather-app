@@ -44,8 +44,6 @@ function App() {
     let temp = Math.round(weather.main.temp);
     let time = new Date().getHours();
     
-    console.log(time);
-
     if (typeof weather.main == "undefined") {
       return "App warm-day";  // default to warm day background if query is invalid              
     } else {
