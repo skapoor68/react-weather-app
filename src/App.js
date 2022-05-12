@@ -36,12 +36,16 @@ function App() {
   }
 
   const backgroundBuilder = () => {
+    if (typeof weather.main === "undefined") {    // first-use default
+      return "App warm-day";
+    }
+
     let condition = weather.weather[0].main;
     let temp = Math.round(weather.main.temp);
     let time = new Date().getHours();
 
     if (typeof weather.main == "undefined") {
-      return "App warm-day";  // default to warm day background               
+      return "App warm-day";  // default to warm day background if query is invalid              
     } else {
       if (condition === "Thunderstorm" || condition === "Drizzle" || condition === "Rain") {
         return "App rain";
