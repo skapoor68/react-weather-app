@@ -82,7 +82,7 @@ function App() {
             onKeyPress={search}
           />
         </div>
-        {(typeof weather.main != "undefined") ? (   // check for first-use and if the search query is invalid
+        {(typeof weather.main != "undefined") ? (   // check for first-use or if the search query is invalid
           <div>
             <div className="location-box">
               <div className="location">{weather.name}, {weather.sys.country}</div>
